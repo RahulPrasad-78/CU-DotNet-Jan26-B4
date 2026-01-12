@@ -1,4 +1,61 @@
+## Build directories
 bin/
 obj/
-wwwroot/
+
+## Visual Studio cache & settings
 .vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## NuGet
+packages/
+*.nupkg
+*.snupkg
+*.nuspec
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Logs & temp
+*.log
+*.pid
+*.svclog
+*.scc
+
+## OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+## Rider / ReSharper
+.idea/
+*.DotSettings.user
+_ReSharper*/
+*_ReSharper*/
+
+## VS Code workspace
+.vscode/
+
+## Test results
+TestResult*/
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+## Publish outputs
+publish/
+*.pubxml
+*.pubxml.user
+
+## Others
+*.tmp
+*.temp
+*.cache
+*.config.user
+*.dbmdl
+*.jfm
+
