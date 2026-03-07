@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Passport Application Form</h1>
+  <hr>
+  <form>
+    <table>
+      <tr>
+        <td>Full Name :</td>
+        <td><input type="text" required></td>
+      </tr>
+      <tr>
+        <td>Gender :</td>
+        <td><input type="radio" name="gender" id="male" required><label for="male">Male</label>
+          <input type="radio" name="gender" id="female" required><label for="female">Female</label>
+        </td>
+      </tr>
+      <tr>
+        <td>Date of Birth</td>
+        <td><input type="date" name="adate" id="adate" required min="1950-01-01" max="2026-01-01"></td>
+      </tr>
+      <tr>
+        <td>Aadhar</td>
+        <td><input type="text" placeholder="ABCD" required></td>
+      </tr>
+      <tr>
+        <td>Pan Number</td>
+        <td><input type="text" placeholder="XYZ" required></td>
+      </tr>
+      <tr>
+        <td>Maritial Status</td>
+        <td>
+          <input type="radio" name="status"><label for="married">Married</label>
+          <input type="radio" name="status"><label for="notmarried">Not Married</label>
+        </td>
+      </tr>
+      <tr>
+        <td>State</td>
+        <td><select name="state" id="state" required>
+            <option value="">Select</option>
+            <option value="1">CHD</option>
+            <option value="2">Bihar</option>
+            <option value="3">New Delhi</option>
+            <option value="4">Haryana</option>
+            <option value="5">Punjab</option>
+          </select></td>
+      </tr>
+      <tr>
+        <td>Employment Status</td>
+        <td><select name="estatus" id="estatus" required>
+            <option value="">Select</option>
+            <option value="1">Student</option>
+            <option value="2">Employed</option>
+            <option value="3">UnEmployed</option>
+            <option value="4">Prefer Not to Say</option>
+          </select></td>
+      </tr>
+      <tr>
+        <td>PassPort Size Phot</td>
+        <td><input type="file"></td>
+      </tr>
+      <tr>
+        <td>
+          <input type="submit">
+        </td>
+        <td>
+          <input type="reset">
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+
+</html>
