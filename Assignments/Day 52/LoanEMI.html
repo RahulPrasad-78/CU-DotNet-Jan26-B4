@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <script>
+    function schedule() {
+      let p = parseFloat(document.getElementById('p').value);
+      let t = parseFloat(document.getElementById('y').value);
+      let r = parseFloat((document.getElementById('r').value / 12) / 100);
+      let emi = (p * r * Math.pow((1 + r), t)) / (Math.pow((1 + r), t) - 1);
+
+      let balance = p;
+      let body = document.getElementById("scheduleBody");
+
+      for (let i = 1; i <= t; i++) {
+
+        let interest = balance * r;
+        let principal = emi - interest;
+        balance = balance - principal;
+
+        let row = "<tr>";
+        row += "<td>" + i + "</td>";
+        row += "<td>" + p.toFixed(2) + "</td>";
+        row += "<td>" + emi.toFixed(2) + "</td>";
+        row += "<td>" + principal.toFixed(2) + "</td>";
+        row += "<td>" + interest.toFixed(2) + "</td>";
+        row += "<td>" + balance.toFixed(2) + "</td>";
+        row += "</tr>";
+
+        body.innerHTML += row;
+
+        p = balance;
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <form>
+    <label>Enter The Principal : </label>
+    <input type="number" id="p"><br><br>
+    <label>Enter The Moths : </label>
+    <input type="number" id="y"> <br> <br>
+    <label>Enter the Annual Rate : </label>
+    <input type="number" id="r"> <br>
+    <button type="button" onclick="schedule()">Generate Schedule</button>
+  </form>
+  <br>
+  <hr>
+  <br>
+  <table border="5" class="table table-hover table-bordered table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>S.No</th>
+        <th>Loan Left</th>
+        <th>EMI</th>
+        <th>Principal</th>
+        <th>Interest</th>
+        <th>Remaining Balance</th>
+      </tr>
+    </thead>
+    <tbody id="scheduleBody"></tbody>
+  </table>
+</body>
+
+</html>

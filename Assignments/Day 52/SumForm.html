@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function sameFunc(input) {
+      if (input.value === "")
+        input.style.backgroundColor = "red";
+      else if (isNaN(input.value))
+        input.style.backgroundColor = "yellow";
+      else
+        input.style.backgroundColor = "white";
+    }
+
+    function mathAdd() {
+      let num = document.getElementsByClassName('a');
+      num1 = num[0].value;
+      num2 = num[1].value;
+
+      let ans = document.getElementById('res');
+      if (!isNaN(num1) && !isNaN(num2) && num1 != "" && num2 != "") {
+        ans.value = Number(num1) + Number(num2);
+        ans.style.backgroundColor = "white";
+      }
+      else {
+        ans.value = "Error";
+        ans.style.backgroundColor = "orange";
+      }
+    }
+
+  </script>
+
+</head>
+
+<body>
+  <input type="text" class="a" onblur="sameFunc(this)">
+  +
+  <input type="text" class="a" onblur="sameFunc(this)">
+  <input type="button" onclick="mathAdd()" value="  =  ">
+  <input type="text" id="res" readonly>
+</body>
+
+</html>
