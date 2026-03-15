@@ -9,33 +9,47 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.AccountName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Balance)
-            </th>
-            <th></th>
+            <th>Account Name</th>
+            <th>Balance</th>
+            <th>Transactions</th>
+            <th>Actions</th>
         </tr>
     </thead>
+
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AccountName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Balance)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.AccountName</td>
+
+                <td>@item.Balance</td>
+
+                <td>
+                    <select class="form-control">
+                        @if (item.Transactions != null && item.Transactions.Any())
+                        {
+                            foreach (var t in item.Transactions)
+                            {
+                                <option>@t.Description - @t.Amount</option>
+                            }
+                        }
+                        else
+                        {
+                            <option>No Transactions</option>
+                        }
+                    </select>
+                </td>
+
+                <td>
+                    <a asp-action="CreateTransaction" asp-route-id="@item.Id">
+                        Add Transaction
+                    </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

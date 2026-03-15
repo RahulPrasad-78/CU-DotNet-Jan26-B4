@@ -22,7 +22,11 @@ namespace FinTrackPro.Controllers
         // GET: Accounts
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Account.ToListAsync());
+            var accounts = await _context.Account
+                .Include(a => a.Transactions)
+                .ToListAsync();
+
+            return View(accounts);
         }
 
         // GET: Accounts/Details/5
@@ -152,6 +156,27 @@ namespace FinTrackPro.Controllers
         private bool AccountExists(int id)
         {
             return _context.Account.Any(e => e.Id == id);
+        }
+
+        //Create Transaction
+        public IActionResult CreateTransaction(int id)
+        {
+            ViewBag.AccountId = id;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateTransaction([Bind("Description,Amount,Category,Date,AccountId")] Transaction transaction)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Transaction.Add(transaction);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(transaction);
         }
     }
 }

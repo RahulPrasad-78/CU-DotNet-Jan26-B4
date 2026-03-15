@@ -6,10 +6,10 @@ namespace FinTrackPro.Models
     {
         public int Id { get; set; }
 
-        public string AccountName { get; set; }
+        public string? AccountName { get; set; }
 
-        public decimal Balance { get; set; }
+        public double Balance { get; set; }
 
-        public List<Transaction> Transactions { get; set; }
+        public List<Transaction> Transactions { get; set; } = new List<Transaction>();
     }
 }
