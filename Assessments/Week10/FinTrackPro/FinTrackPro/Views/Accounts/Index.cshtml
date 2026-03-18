@@ -1,0 +1,108 @@
+﻿@model IEnumerable<FinTrackPro.Models.Account>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Account Name</th>
+            <th>Balance</th>
+            <th>Transactions</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.AccountName</td>
+
+                <td>@item.Balance</td>
+
+                <td>
+                    <div class="mb-2">
+                        <button type="button" class="btn btn-sm btn-primary me-1" onclick="showTransactions('txs-@item.Id')">Show Transactions</button>
+                        <button type="button" class="btn btn-sm btn-secondary" onclick="hideTransactions('txs-@item.Id')">Collapse</button>
+                    </div>
+
+                    <div class="collapse" id="txs-@item.Id">
+                        <div class="card card-body p-2">
+                            @if (item.Transactions != null && item.Transactions.Any())
+                            {
+                                <table class="table table-sm mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Description</th>
+                                            <th>Amount</th>
+                                            <th>Category</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var t in item.Transactions.OrderBy(t => t.Date))
+                                        {
+                                            var isDebit = t.Category != null && t.Category.Equals("Debit", System.StringComparison.OrdinalIgnoreCase);
+                                            <tr>
+                                                <td>@t.Description</td>
+                                                <td class="@(isDebit ? "text-danger" : "text-success")">@(((isDebit) ? "-" : "+") + System.Math.Abs(t.Amount).ToString("F2"))</td>
+                                                <td>@t.Category</td>
+                                                <td>@t.Date.ToString("dd MMM yyyy") </td>
+                                                <td><a asp-action="EditTransaction" asp-route-id="@t.Id" class="btn btn-sm btn-outline-warning me-1">Edit</a> </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Opening Balance</th>
+                                            <th>@( (item.Balance - ( item.Transactions.Where(tt => !(tt.Category != null && tt.Category.Equals("Debit", System.StringComparison.OrdinalIgnoreCase))).Sum(tt => System.Math.Abs(tt.Amount)) - item.Transactions.Where(tt => tt.Category != null && tt.Category.Equals("Debit", System.StringComparison.OrdinalIgnoreCase)).Sum(tt => System.Math.Abs(tt.Amount)) )).ToString("F2") )</th>
+                                            <th>Closing Balance</th>
+                                            <th>@item.Balance.ToString("F2")</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            }
+                            else
+                            {
+                                <div>No Transactions</div>
+                            }
+                        </div>
+                    </div>
+                </td>
+
+                <td class="text-end">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning me-1">Edit Account</a>
+
+                    <form asp-action="Delete" asp-route-id="@item.Id" method="post" class="d-inline">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Delete account "@item.AccountName"?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+<script>
+    function showTransactions(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var bs = window.bootstrap && window.bootstrap.Collapse ? window.bootstrap.Collapse.getOrCreateInstance(el) : null;
+        if (bs) bs.show(); else el.classList.add('show');
+    }
+
+    function hideTransactions(id) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var bs = window.bootstrap && window.bootstrap.Collapse ? window.bootstrap.Collapse.getOrCreateInstance(el) : null;
+        if (bs) bs.hide(); else el.classList.remove('show');
+    }
+</script>
+
+</table>

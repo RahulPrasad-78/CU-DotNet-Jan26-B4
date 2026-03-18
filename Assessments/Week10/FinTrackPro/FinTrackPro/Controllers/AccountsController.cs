@@ -58,7 +58,7 @@ namespace FinTrackPro.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AccountName,Balance")] Account account)
+        public async Task<IActionResult> Create( Account account)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace FinTrackPro.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,AccountName,Balance")] Account account)
+        public async Task<IActionResult> Edit(int id, Account account)
         {
             if (id != account.Id)
             {
@@ -167,16 +167,82 @@ namespace FinTrackPro.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateTransaction([Bind("Description,Amount,Category,Date,AccountId")] Transaction transaction)
+        public async Task<IActionResult> CreateTransaction( Transaction transaction)
         {
             if (ModelState.IsValid)
             {
+                var amount = Math.Abs(transaction.Amount);
+                transaction.Amount = amount;
+                transaction.Category = transaction.Category?.Trim();
+
+                var account = await _context.Account.FindAsync(transaction.AccountId);
+                if (account == null)
+                {
+                    ModelState.AddModelError("AccountId", "Account not found.");
+                    ViewBag.AccountId = transaction.AccountId;
+                    return View(transaction);
+                }
+
+                var isDebit = !string.IsNullOrWhiteSpace(transaction.Category) &&
+                              transaction.Category.Equals("Debit", StringComparison.OrdinalIgnoreCase);
+
+                if (isDebit)
+                {
+                    account.Balance -= amount;
+                    transaction.Category = "Debit";
+                }
+                else
+                {
+                    account.Balance += amount;
+                    transaction.Category = "Credit";
+                }
+
+                transaction.Id = 0; //  critical fix
+
                 _context.Transaction.Add(transaction);
+                _context.Account.Update(account);
+
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
 
+            // when model state invalid, ensure view has AccountId for the hidden input
+            ViewBag.AccountId = transaction?.AccountId ?? 0;
             return View(transaction);
         }
+
+        // GET: Accounts/EditTransaction/5
+        public async Task<IActionResult> EditTransaction(int? id)
+        {
+            if (id == null) return NotFound();
+            var transaction = await _context.Transaction.FindAsync(id);
+            if (transaction == null) return NotFound();
+            return View(transaction);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditTransaction(int id, Transaction transact)
+        {
+            if (id != transact.Id) return NotFound();
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(transact);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!TransactionExists(transact.Id)) return NotFound();
+                    throw;
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(transact);
+        }
+
+        private bool TransactionExists(int id) => _context.Transaction.Any(t => t.Id == id);
     }
 }
