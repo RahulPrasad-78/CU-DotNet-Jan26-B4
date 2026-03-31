@@ -1,0 +1,5 @@
+[
+  { "StuId": 1, "Name": "jai", "Grade": 90 },
+  { "StuId": 1, "Name": "Sneha", "Grade": 100 },
+  { "StuId": 2, "Name": "Rahul", "Grade": 97 }
+]

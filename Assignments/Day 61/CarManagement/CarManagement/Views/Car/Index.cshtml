@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CarManagement.Models.Car>
+
+@{
+    ViewData["Title"] = "Cars";
+}
+
+<h1>Cars</h1>
+
+<p>
+    @if (User.IsInRole("Admin") || User.IsInRole("Customer"))
+    {
+        <a asp-action="Create" class="btn btn-primary">Create New</a>
+    }
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th class="text-end">Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (Model != null && Model.Any())
+    {
+        foreach (var car in Model)
+        {
+            <tr>
+                <td>@car.Brand</td>
+                <td>@car.Model</td>
+                <td>@car.Year</td>
+                <td class="text-end">@car.Price.ToString("C")</td>
+                <td>
+                    @* Edit/Delete are Admin-only in your controller *@
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@car.Id" class="btn btn-sm btn-secondary">Edit</a>
+
+                        <form asp-action="Delete" asp-route-id="@car.Id" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this car?');">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <span class="text-muted">—</span>
+                    }
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td colspan="5" class="text-center">No cars found.</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
