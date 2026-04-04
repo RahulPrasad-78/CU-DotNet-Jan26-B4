@@ -1,0 +1,54 @@
+﻿@model IEnumerable<VagaBond.MVC.Models.Destination>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">Destinations</h2>
+        <a asp-action="Create" class="btn btn-success">Create New</a>
+    </div>
+
+    <div class="card">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>@Html.DisplayNameFor(model => model.Id)</th>
+                            <th>@Html.DisplayNameFor(model => model.CityName)</th>
+                            <th>@Html.DisplayNameFor(model => model.Country)</th>
+                            <th>@Html.DisplayNameFor(model => model.Description)</th>
+                            <th>@Html.DisplayNameFor(model => model.Rating)</th>
+                            <th>@Html.DisplayNameFor(model => model.LastVisted)</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(m => item.Id)</td>
+                                <td>@Html.DisplayFor(m => item.CityName)</td>
+                                <td>@Html.DisplayFor(m => item.Country)</td>
+                                <td class="text-truncate" style="max-width:300px">@Html.DisplayFor(m => item.Description)</td>
+                                <td>@Html.DisplayFor(m => item.Rating)</td>
+                                <td>@Html.DisplayFor(m => item.LastVisted)</td>
+                                <td class="text-end">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary me-1">Edit</a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="7" class="text-center py-4">No destinations found.</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

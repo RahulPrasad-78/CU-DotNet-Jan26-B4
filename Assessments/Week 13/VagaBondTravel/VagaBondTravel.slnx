@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="VagaBond.MVC/VagaBond.MVC.csproj" Id="c2f42ad4-b991-41da-9494-f0c5e3dfac88" />
+  <Project Path="VagaBond.WebAPI/VagaBond.WebAPI.csproj" />
+</Solution>
