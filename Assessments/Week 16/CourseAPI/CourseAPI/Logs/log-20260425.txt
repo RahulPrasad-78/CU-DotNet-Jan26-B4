@@ -1,0 +1,6 @@
+2026-04-25 12:23:38.836 +05:30 [INF] Fetching all courses
+2026-04-25 12:23:39.657 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'Course'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2026-04-25 12:23:40.930 +05:30 [INF] HTTP GET /api/Courses responded 200 in 2552.6217 ms
+2026-04-25 12:23:58.237 +05:30 [INF] Creating a new course
+2026-04-25 12:23:58.307 +05:30 [WRN] Validation failed while creating course: ["'Price' must be greater than '0'."]
+2026-04-25 12:23:58.322 +05:30 [INF] HTTP POST /api/Courses responded 400 in 205.5890 ms
