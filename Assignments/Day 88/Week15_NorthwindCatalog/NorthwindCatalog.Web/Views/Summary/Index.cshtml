@@ -1,0 +1,34 @@
+﻿@model List<CategorySummaryDto>
+
+<div class="mb-4">
+    <h2 class="mb-1">Category Summary</h2>
+    <p class="text-muted mb-0">Quick insights for each product category.</p>
+</div>
+
+<div class="card shadow-sm border-0">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Category</th>
+                        <th>Count</th>
+                        <th>Avg Price</th>
+                        <th>Most Expensive</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="fw-semibold">@item.CategoryName</td>
+                            <td>@item.ProductCount</td>
+                            <td>@item.AvgPrice.ToString("C")</td>
+                            <td>@item.MostExpensiveProduct</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
