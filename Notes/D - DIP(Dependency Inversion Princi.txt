@@ -1,0 +1,5 @@
+D - DIP(Dependency Inversion Principle)
+Higher Module should not depend on Lower Module class
+it should only depend on abstraction class
+		AND
+details of the class should depend on abstraction class

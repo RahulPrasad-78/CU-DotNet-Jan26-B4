@@ -1,0 +1,91 @@
+Unit Testing
+
+we create Library
+create a public class
+public method(s)
+
+we use the library class in another project
+
+we should test the method is working fine.
+we can create some test cases to check method code logic 
+
+in.NET we use different frameworks for unit testing
+
+NUnit, XUnit
+
+we can create a testing project to test any other project
+Conosle projects - executable 
+Library Projects - for refrence 
+
+In a code we can write some additional information about a 
+type(class) or a method using [Test] - Attributes
+
+the following method is test case
+
+we run the test cases in a window called Test Expplorer
+
+Assesrt is a class under Unit testing framework to 
+test something....
+
+Assert.Pass() - just pass it
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+what is AAA
+A Arrange - arrange the TestBed
+A Act - 
+A Assert
+
+to avoid creating multiple test case methods for just 
+changing the input, expected values
+
+better we can use parameterized  test case Methods
+
+for that purpose we use another attribute [TestCase()]
+
+[Setup] attribute is used to define a method that will run before every test
+
+[TearDown]  a method that will run before every test
+
+we can debug a test case
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

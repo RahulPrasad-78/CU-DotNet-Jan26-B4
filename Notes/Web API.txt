@@ -1,0 +1,55 @@
+Web API
+
+what is it? RESTFUL API
+
+Representational State Transfer for Resources
+
+purpose - to provide data from server based on some constraints/Rules defied by REST architecture
+define by REST architecture
+
+
+CORS-Cross Origin Resource Sharing
+Resource is any object or data on server
+To allow sharing of resource from a Server to another application, CORS should be enabled
+data about 3any entity
+
+REST supports client - server architecture and it is stateless
+stateless - server will not store any information about client
+	that means every request is separate request
+
+Client can be any application trying to use resources 
+e.g. MVC, Angular, React etc
+
+We will use controller without views 
+	the API controller class will derive from Controller Base
+
+this is base class of controller class that does not support Views
+
+Open API is standard for documentation of APIs
+But it is implemented using a software called SwaggerUI
+
+will define endpoints available from API server
+End user will know what resource sharing is available
+
+We can create API using Controllers or without controllers called minimal API
+ 
+project Folder API
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

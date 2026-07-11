@@ -1,0 +1,40 @@
+Threads
+
+What is a thread? 
+Console App runs on a single thread - Main thread
+
+Why we need to create more threads?	Concurrency -
+Multiple jobs are being done - OS is providing time to each one
+Will it take more time than 1 by 1 pages
+ 
+More Overhead - switching
+Example - Games
+
+How to create ad use threads? Thread class
+Constructor will expect ThreadStart or ParameterizedThreadStart
+
+what are these ? there are delegates.
+Start method is used to start the thread working
+
+Multiple apps are manipulated/handled by OS.
+
+Join Method is used to wait for completion of task being done by a thread before main thread terminates
+Main Thread is parent thread and  t1 and t2 are child threads of main thread
+Real Life scenario
+Bank Account - Withdraw Facility (Method)
+
+Suppose request come from various banks for a withdraw?
+Balance is 1000
+Cheque1 - 759
+Cheque2 - 750
+
+without thread handled transaction?
+with threads how to change behavior?
+
+Racing Condition? Multiple Clients are trying to access the same resource at the same time
+
+To overcome this scenario?
+lock keyword create a token system
+
+
+

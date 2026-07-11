@@ -1,0 +1,86 @@
+Web Designing
+
+HTML - Content
+CSS  - Design
+JS - Behavior
+Bootstrap - set of css built in class
+
+VS Code Extension
+HTML Boilerplate
+Prettier
+Vscode-icon
+
+
+HTML 5
+document - head body
+
+responsiveness - rendering on different devices as per their size
+
+
+<tags> <h1>Welcome</h1> inner HTML
+self closing text 
+<br> <hr>
+
+
+Heading H1 - H5
+in HTML we have elements
+1. Block Element
+2. Inline Element
+
+
+to create a link <a>
+some element can have attributes <a href
+
+we can next elements
+
+List - ul (bullests) ol (numbers/roman)
+
+table tr td th 
+in a table we can have collapsed cols
+purpose is to create common heading for multiple columns
+
+creating Forms : To gather information and data for any purpose like Employee Registration
+
+Controls - TextBox, Radio, DropDown, Checkboxes, Date, Buttons
+
+input tag 
+
+if we create controls without a form ?
+Submit and Reset 
+
+
+
+CSS: Cascading Style Sheet
+
+why - Styling element, colors, front, layout, alignment, margins, padding, borders
+
+How to use CSS - 3 ways
+		inline, internal, external
+
+selector{
+color : red;
+}
+
+selector - element, class, id
+h1
+
+combinators - combine same style on multiple elements
+
+Box Moddel = Margin + Border + Padding
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

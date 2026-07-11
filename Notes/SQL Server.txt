@@ -1,0 +1,221 @@
+SQL Server
+
+SSMMS Connect to an instance of SQL Server
+May be back end instance is not available
+
+A network related or instance-specific error occurred
+ 
+How to run SQL Server Instance?
+in window run services 
+run sqlexpress service 
+
+Server name - .\sqlexpress
+		. means localhost (local machine)
+
+SQL Server Development
+
+we can work on design mode
+we can work on query mode
+
+to create a table we can write a command
+
+DDL - Data Definitaion Language (create table, drop table,)
+DML - Data manipulation Language (Insert, update, delete, )
+DCL - 
+
+to work on a query we write on an editor 
+create table with columns 
+
+data type int, nchar(10) fixed length
+
+.sql file is a script file
+
+whenever we create a DB how many files are created on disk?
+
+In SQL Server by default creates  2 files 
+
+primary File - main database
+
+Log File - used for  commit and rollback
+
+
+
+NorthWind - A trading company database with tables
+
+
+Products - product details
+		ProductID - PK
+		SupplierID - FK
+		CategoryID - FK
+
+a table can have inly 1 PK
+a table can multiple FK
+
+Categories - to group products
+
+
+Employee - To run the Company and manage orders, customers
+Supplies - they will supply products
+Orders - to keep record of orders
+Customers - will place orders
+Shipper - for shipment
+
+
+Products - ProductID 
+---------------------------------------------------------------------------------------------
+
+Faculty - [FacultyID], FacultyName, Subject
+Student - [StudentID], StudentName, Class, FacultyId
+
+a faculty can teach multiple students 
+1 to many relation
+
+create table faculty(facultyid int primary key,
+	facultyname varchar(30) not null,
+	subject varchar(20));
+
+create table student ( studentid int primary key, studentname varchar(50),
+	class varchar(20), faculty int foreign key
+	reference faculty(facultyid))
+
+data integrity
+referential integrity
+
+------------------------------------------------------------------------------------------------
+
+1NF - 
+2NF - 
+
+why we do normalization? to remove redundant and avoid various anomaly
+			(update, insert, delete)
+
+SQL Server Engine is parsing the query validating all tables name and column names, syntaxes etc
+
+whenever we create a primary key one index is created
+that index is called  clustered index
+Internally it is implemented as B-Tress
+
+what is an index ?
+Book has an Index,
+TOC beginning Index End
+
+indexes are created on certain columns on performance based decided by admin or developer
+
+why not create on every column - slow
+non pk - non clustered index
+clustered index = sorted
+
+
+we should create indexes on only those columns used more in where clause
+Admin - 
+Profiler - tool
+
+execution plan uses indexes to run the query
+
+TSQL - Transact SQL
+why we need TSQL - to write code with constructs
+
+
+to write certain objects - procedure, function, trigger
+
+certain object can be store on server as pre-compiled objects
+
+Views - is virtual table - read only
+we can save any query as a view
+we can write a simple query - select * from view1;
+in the view we can't use order by
+we will apply when running the view 
+under views Collection
+
+
+TSQL - Language - type, variable, declaration, init, while,if, blocks
+{
+}
+
+@@ - System variable
+@ - user define variable
+variable - declare @i int;
+
+variable  -
+create procedure proc - begin1
+@num1 int,
+@num2 int
+begin
+	declare @sum int;
+	set @sum = @num1 + @num2;
+	Select @sum as Sum; 	--results
+end
+
+Procedure
+Function
+trigger
+
+---------------------------------------------------------------------------------------------
+
+Functions:
+
+to execute a function we can use a select
+
+procedure can not be used in a select statement 
+function can be used
+
+create a function to get 10% discount on product price
+
+----------------------------------------------------------------------------------------------
+
+ADO.NET
+if we want to handle data at base level we can use ADO.NET
+ActiveX data objects 
+Why we use it ?
+
+As a .NET developer we could connect any SQL Server
+through coding and manipulate the data (CRUD operations)
+
+we have some classes handle data crud operations
+EF Entity  Framework is an ORM
+object Relational Mapper
+
+
+-----------------------------------------------------------------------------------------------
+Connecting database 
+
+
+Create a new connection 
+open connection properties
+
+create sqlCommand object
+use connection property to connect with connection
+
+use sqpDataReader to get data from SQL server
+DATA reader is read only sequential reader
+
+Command.ExecuteReader();
+
+Query - select
+NonQuery - Insert, update, Delete
+
+Never create a parameterized 
+
+SQL Injection - threat
+
+
+-----------------------------------------------------------------------------------------------
+Connected Mode: Reader() class;
+
+Disconnected Mode: Adapter class:- select, update, delete, Insert.......... CommandBuilder 
+Adapter: adapterfill() to take data
+	adapter.saveChanges() save dataa
+
+
+
+
+
+
+
+
+
+
+
+
+
+

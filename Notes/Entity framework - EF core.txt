@@ -1,0 +1,98 @@
+Entity framework - EF core
+ORM - Object Relational Mapper
+	List	tables
+
+we will work on object of entity classes, will put the data in collections of objects like List<Laptop>
+
+For EF we have  approach:
+			DB First - If DB is available (rarely)
+			Code First - preferred 
+
+specify the table name as DbSet<Laptop> Laptops
+
+we will not create database manually 
+it will be created by code only
+
+build your project
+
+open package manager console
+
+we will write certain commands to create migrations 
+	Migrations are like sql scripts
+
+the process will create a folder "Migration"
+
+PMC> add-migrations init
+
+after creating migration file, 
+we have to execute migration
+
+migration created automatically 
+PM> update-database using migration update database
+
+
+CRUD operation using EF and LinkQ
+
+-----------------------------------------------------------------------------------------------------
+EF Installation
+
+we will nuget packages for EF, SQL Server
+and some other tools
+
+Create a Project - e.g 
+add these packages
+
+Manage Nuget Package:
+		-Microsoft.EntityFrameWorkCore (v - 9.0.11)
+		-Microsoft.EntityFrameWorkCore.sqlServer (v - 9.0.11)	
+		-Microsoft.EntityFrameWorkCore.tools (v - 9.0.11)	
+		-Microsoft.EntityFrameWorkCore.design (v - 9.0.11)
+
+
+		
+Models
+	Entity Class e.g Laptop
+
+Data
+	Context Class	
+	Any Class derived from DbContext
+
+	What is DbContext?
+	A class that represent database
+	and its tables
+
+	How to use it?
+	override a method - OnConfiguring
+
+	In context class also specify
+	the table(s) to be created in DB
+
+	delete existing statement
+	we have to add dataprovider information - from the collection stream
+	tell what server you are using
+
+onModelingCreating
+
+
+Entity Framework Core
+Defining and using related tables
+
+DEFINING and using related tables and DbSets 
+we have to define navigation properties
+in entity classes 
+
+A dept can have many employees
+an employee can belong to a department
+
+
+
+
+
+
+
+
+
+
+
+
+		

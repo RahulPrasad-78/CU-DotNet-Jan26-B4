@@ -1,0 +1,145 @@
+ASP .NET CORE - an open source cross platform framework to create various types of web applications
+1.MVC - with views
+2.WEB API - for data operations without views
+
+Features:
+	- cross platform Web Server (Kestrel)
+	- Request Pipeline- Middleware
+	- modular support for services
+	- Logging
+	-DI(Dependency Injection)
+	- Configuration Support (from diff files)
+		launchSettings or appSettings
+				  (connectionString)	
+
+On Windows - Web Server - IIS Server
+
+MVC - Models Views Controllers
+MVC is an architectural pattern to have separation of concerns
+every component has separate responsibility
+Controllers - will handle all requests
+Models- will be handling data
+Views - for presentations
+
+In asp.net all applications starts as console app
+we have program.cs and Main
+This program defines the services used an the middleware
+
+It will also create a Host(Web server) that will run the application using diff endpoints(urls)
+By default we get a controller - HomeController
+A controller is a class derived from Controller class naming convention - class NameController : Controller 
+A controller class can have 1 or more Action methods
+An Action Method returns ActionResult
+that can be a view
+
+In web application we work with some verbs
+	GET POST PUT DELETE
+by default an action method is for GET
+if no attribute is otherwise provided
+[HttpGet]
+
+An action method returns a view with the same name as that of method name
+
+Whare are views available - 
+	In Views Folder - Controller name folder 
+
+Views is a file with extension .cshtml
+	combination of CS and HTML
+		uses Razor Engine - Razor Pages
+
+some views are shared views those can be used by 
+	all controllers/requests
+
+another example of shared view is Layout.cshtml
+this view is used as a master page
+Containing header and footer 
+
+to configure master view, we use _ViewStart.cshtml
+which defines the _Layout to be used 
+
+apart from html tags it can have @{}
+
+In Models folder we can define Entity classes 
+that we can use for data handling
+
+To run MVC applications request depends on Route
+https://localhost:7086/
+
+every app will have a different port
+Route is defined as a Combination of this URL 
+https://localhost:7086/ControllerName/ActionMethodName
+
+https://localhost:7086/Home/Index
+
+we can define a default/configure route so that while running application we don't have to provide startup controller and action method 
+dependency injection is a feature of MVC/ASP.NET Framework
+
+In program.cs this is also configured 
+First line is creating the Host (Kestrel)
+the port assigned is configured is launchsettings.json file under properties folder
+
+we have http and https ports and URLs 
+http request will be redirected to https request automatically
+
+the Build command is creating the server and associated with service like logging
+
+program.cs is doing majorly 2 things
+
+defining the services 
+
+defining the middleware
+
+Middleware is a software that will run as a part of request handling
+we can add as many middleware as required
+but order of middleware is important 
+Like Authentication before Authorizations
+
+useStaticFiles()
+static files - html + css + js etc
+static files are inside wwwroot folder
+
+we can create any html file in this folder
+
+for any application we can work on development env or Production
+we can define this in a file launchSettings
+URLs + Port + env etc
+
+appointment 
+when you try to meet him- you will be 
+	assigned one gatepass
+
+Visual Studio is Supporting HotReload
+
+Add an ActionMethod - ContactUs
+add a view - right click on method - add view 
+not an empty view
+
+as of  now on entity model used
+
+
+Add a Controller 
+Can change the ActionMethod name from Index
+Index is not mandatory
+
+Create a view 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,33 @@
+File Handing
+
+I/O streams - a flow of data
+
+Console.WriteLine();
+Console.ReadLine();	return string
+
+Console.Read();	return int 
+		-1, if no char available EOS
+		on input user has to press Enter
+
+
+Console.ReadKey() for inoutting a keyChar along with  KeyModifiers
+	returns a ConsolekeyInfo
+		.Key property return ConsoleKey
+		.Modifiers return Ctrl, Shift, Alt
+
+File - Static Class 
+	File
+	Directory
+
+File.Create overwrites the file if exists
+
+unmanaged codde - we have to manage dispose of these objects.
+
+FileStream is non static class - object
+
+FileStream is non static class - object
+ 
+StreamWrite / StreamReader
+
+text based wrappers on Filestream
+to do line wise read and write

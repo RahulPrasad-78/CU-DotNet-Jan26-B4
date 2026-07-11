@@ -1,0 +1,16 @@
+why we use const?
+why we use static.
+
+what is readonly?
+we can give value to readonly during compilation or constructor. 
+but its not same for const
+
+What is Abstract vs Sealed class?
+abstract has to be inherited but we can't inherite the sealed class
+
+why use static Constructor? 
+it only runs once in whole code, when we create a obj otherwise it won't run
+
+why we use private Constructor?
+we can define a single private Constructor if we don't want to use a single code again and again in public constructor. its works on DRY principal.
+

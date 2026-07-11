@@ -1,0 +1,51 @@
+Tracing     vs    Debugging
+Passive             Active
+Default trace output goes to output window
+we can add target locations for trace
+e.g. can add tracing info to a file (append mode)
+
+Trace.Listeners  - target places (files)
+
+
+What is params keyword?
+why to use it?
+
+can be used to convert multiple values into an array
+create a method to pass any number of integers and return sum of all.
+
+calling method can create an array of int[size]
+
+delegate 
+What is the delegate?
+
+It is a type that can refer to a method of same signature.
+How to create?
+using delegate keyword with a signature and a delegate type name.
+
+Why  we use delegate?
+delegates are used in LINQ, or in event Handling.
+
+delegates can refer multiple methods at a time called Multicasting.
+
+How to create a method without a name?
+Procedure and function
+
+in c# void method is procedure
+and method with return type is function.
+
+2 types of delegates  - Action and Func
+
+LINQ - Language Integrated Query
+
+Why LINQ?
+Provides a set of extension methods
+
+Query - SQL 
+
+Similar to SQL, Select Where OrderBy should be working on C# Collections
+
+
+Source of data - Collection
+a lambda returning a Boolean value is called 
+
+

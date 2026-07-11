@@ -1,0 +1,17 @@
+ASYNC
+
+will prefer async call for avoiding blocking calls and make our system more responsive.
+utilize the waiting for other tasks
+
+async await Task Task<T>
+
+create async method - add async as suffix
+avoid using threads
+
+use keywords async in method signature and await to mark delayed statements
+
+avoid using void return type - use task as return type
+
+change Main signature if async method is called void -> async task
+
+async ca

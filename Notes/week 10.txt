@@ -1,0 +1,77 @@
+week 10
+JS - A language for web
+it can change the content,
+used for creating dynamic pages with behavior
+
+can work with events
+
+How to use it?
+
+<script> </script>
+we can write functions or statements 
+we can add script tag in head or body
+
+preferred to put in body end
+to make the page more faster to load
+
+we can include JS in html file 
+or we can add separately (external js)
+
+
+we create function on any event
+e.g click or load or submit etc 
+
+as a Language JS supports variables, constructs etc
+
+datatype - not a explixitly typed
+
+we can directky create a variable without a var
+
+var x; //var has some drawbacks 
+var is by default global
+
+let v1; // it is scoped
+
+modern JS we prefer let
+
+NAN Not a Number
+
+parseInt can be used to convert string into int
+
+undefined - a var is not initialized
+
+DOM - Document Object Model
+
+html - head body
+		form
+			input
+
+to manipulate any element we have to refer it using id or name
+
+preferred is by Id
+
+getElementbyid 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
